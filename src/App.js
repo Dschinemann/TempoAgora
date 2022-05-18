@@ -1,23 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import "./styles/App.css";
+import InputCity from "./components/inputCity";
+import DescriptionCity from "./components/descriptionCity";
+import Forecast from "./components/forecast";
+import * as service from "./services/search";
+import { useState, useEffect } from "react";
+import night from "./images/night.png";
 
 function App() {
+  const [city, setCity] = useState(null);
+
+  const fetchCityIp = async () => {
+    try {
+      let resp = await service.getCityIp();
+      setCity(resp.results);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const changeBackground = () => {
+    if (city?.currently === "noite") {
+      document.body.style.backgroundImage = `url(${night})`;
+    }
+  };
+
+  useEffect(() => {
+    fetchCityIp();
+    changeBackground();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container">
+      <div>
+        <InputCity />
+        <DescriptionCity
+          name={city?.city_name}
+          description={city?.description}
+          temp={city?.temp}
+          time={city?.time}
+          wind_speedy={city?.wind_speedy}
+        />
+      </div>
+      <div className="list">
+        <Forecast list={city?.forecast} />
+      </div>
     </div>
   );
 }

@@ -1,0 +1,67 @@
+body {
+  margin: 0;
+  background-image: url("../images/backGroundSun.png");
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+#root{
+  padding: 16px;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+.input-city{
+  display: flex;
+    flex-direction: column;    
+}
+label{
+  font-size: 1.5rem;  
+  margin-bottom: 5px;
+}
+
+#city-name{
+  padding: 5px;
+  outline: none;
+}
+.container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.list{
+  max-height: 90vh;
+  overflow: auto;
+  margin-top: 32px;
+  padding-right: 16px;
+}
+li{
+  list-style: none;
+  background-color: antiquewhite;
+  padding: 25px;
+  margin-bottom: 8px;
+  border-radius: 15px;
+}
+
+.daylist{
+  display: flex;
+    justify-content: space-between;
+}
+.container-descripton{
+  margin-top: 16px;
+}
+.cntr-temperature{
+  display: flex;
+  flex-direction: column;
+}
+.min-max-temp{
+  display: flex;
+  justify-content: space-between;
+}
+hr{
+  margin: 0;
+}
